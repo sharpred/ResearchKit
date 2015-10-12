@@ -376,6 +376,7 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
 - (void)requestPedometerAccessWithHandler:(void (^)(BOOL success))handler {
     NSParameterAssert(handler != nil);
     if (![CMPedometer isStepCountingAvailable]) {
+        ORK_Log_Warning(@"pedometer snafu");
         handler(NO);
         return;
     }
